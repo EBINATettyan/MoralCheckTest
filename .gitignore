@@ -1,0 +1,8 @@
+bin/
+work/
+.classpath
+.project
+.DS_Store
+WEB-INF/classes/
+"*.class"
+WEB-INF/src/utility/DriverAccessor.java
