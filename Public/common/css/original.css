@@ -1,0 +1,72 @@
+/* navbar�̑S�̂̔w�i�F�ƃ{�[�_�[�J���[ */
+#navbar_overall {
+	background-color: #99CC66;
+	border-color: #99CC66;
+}
+
+/*�i�r�Q�[�V�����o�[�̐F��T�C�Y��ύX�ihome.jsp�j*/
+#navbar_overall_home {
+	background-color: #99CC66; //#00 BFFF;
+	border-color: #99CC66; //#00 BFFF;
+	height: 80px;
+	padding: 5px 15px;
+}
+
+/* navbar�̃e�L�X�g�J���[ */
+#navbar_text_left_side, .navbar_text_right_side {
+	color: #ffffff;
+}
+
+body {
+	padding-top: 70px;
+}
+
+/*���o���ɂ��āihome.jsp�j*/
+h3.heading:after {
+	background-color: #99CC99; /* ���F */
+	border-radius: 5px; /* �����̔��� */
+	content: "";
+	display: block;
+	height: 10px; /* ���� */
+}
+/*�����̃Z���^�����O�ihome.jsp�j*/
+h3.text_centering {
+	text-align: center;
+}
+
+/* �}���̐F�iresult.jsp�j */
+.fa-circle-o {
+	color: #E60012;
+}
+
+/* result�̃o�c�̐F */
+.fa-times {
+	color: #0068B7;
+}
+/*result�̕\�̗v�f�̑傫�����w��*/
+.true_of_false {
+	width: 9%;
+}
+
+/*�Z���̎n�߂̐F�̎w��*/
+.left_cell {
+	background-color: #ccffcc;
+}
+
+#login-form {
+	width: 400px;
+	margin: 40px auto;
+	padding: 20px;
+	border: 1px solid 000000;
+}
+/* font */
+#login-form p {
+	color: 000000;
+	font-weight: bold;
+}
+
+#login-form .title {
+	font-family: Arial;
+	font-size: 30px;
+	color: 000000;
+}
