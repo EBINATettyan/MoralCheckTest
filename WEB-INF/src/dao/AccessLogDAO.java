@@ -48,7 +48,7 @@ public class AccessLogDAO extends DriverAccessor {
 		 * 今回は、2018/10/16(火)/10:10
 		 */
 		Calendar c = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/(E)/HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/(E)/HH:mm:ss");
 		String startTime = sdf.format(c.getTime());
 
 		Connection con = null;

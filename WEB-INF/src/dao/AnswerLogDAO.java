@@ -30,13 +30,13 @@ public class AnswerLogDAO extends DriverAccessor {
 			stmt.setInt(3, answerLog.getQuestionId());
 			stmt.setDouble(4, answerLog.getDiscrimination());
 			stmt.setDouble(5, answerLog.getDifficulty());
-			stmt.setInt(6, answerLog.getSection());
-			stmt.setInt(7, answerLog.getTrueOrFalse());
-			stmt.setDouble(8, answerLog.getAbility());
-			stmt.setInt(9, answerLog.getAnswer1());
-			stmt.setInt(10, answerLog.getAnswer2());
-			stmt.setInt(11, answerLog.getAnswer3());
-			stmt.setInt(12, answerLog.getAnswer4());
+			stmt.setInt(6, answerLog.getTrueOrFalse());
+			stmt.setDouble(7, answerLog.getAbility());
+			stmt.setInt(8, answerLog.getAnswer1());
+			stmt.setInt(9, answerLog.getAnswer2());
+			stmt.setInt(10, answerLog.getAnswer3());
+			stmt.setInt(11, answerLog.getAnswer4());
+			stmt.setString(12, answerLog.getAnswerItemTime());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -66,9 +66,9 @@ public class AnswerLogDAO extends DriverAccessor {
 			List<AnswerLog> answerLogList = new ArrayList<AnswerLog>();
 			while (rs.next()) {
 				AnswerLog answerLog = new AnswerLog(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("question_id"),
-						rs.getDouble("discrimination"), rs.getDouble("difficulty"), rs.getInt("section"),
-						rs.getInt("true_or_false"), rs.getDouble("ability"), rs.getInt("answer1"), rs.getInt("answer2"),
-						rs.getInt("answer3"), rs.getInt("answer4"));
+						rs.getDouble("discrimination"), rs.getDouble("difficulty"), rs.getInt("true_or_false"),
+						rs.getDouble("ability"), rs.getInt("answer1"), rs.getInt("answer2"),
+						rs.getInt("answer3"), rs.getInt("answer4"), rs.getString("answer_item_time"));
 				answerLogList.add(answerLog);
 			}
 
