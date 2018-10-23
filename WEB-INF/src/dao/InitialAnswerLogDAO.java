@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.AnswerLog;
+import beans.InitialAnswerLog;
 import utility.DriverAccessor;
 
 public class InitialAnswerLogDAO extends DriverAccessor {
 
 	// 解答を蓄積する
-	public void insertAnswerLog(AnswerLog answerLog) {
+	public void insertAnswerLog(InitialAnswerLog answerLog) {
 
 		Connection con = null;
 		con = createConnection();

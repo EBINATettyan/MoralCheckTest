@@ -13,8 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.InitialAnswerLog;
 import beans.InitialQuestion;
+import dao.InitialAnswerLogDAO;
 import dao.InitialQuestionDAO;
+import irt.EstimateAbility;
 
 public class SelectInitialQuestionServlet extends HttpServlet {
 
@@ -24,6 +27,7 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
+	@SuppressWarnings({ "unchecked", "null" })
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
@@ -62,12 +66,15 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		//correctAnswerListとanswerListの内容が一致しているか確認
 		int trueOrFalse;
 		boolean judge = Arrays.equals(answerList, correctAnswerList);
-		if (judge = false) {
+		if (judge == false) {
 			trueOrFalse = 0;
 		} else {
 			trueOrFalse = 1;
 		}
 
+		ArrayList<Integer> u = null;
+		ArrayList<Double> a = null;
+		ArrayList<Double> b = null;
 		/*
 		 * 能力値を算出するために必要な回答履歴をsessionで保持する
 		 * 必要な変数は、trueOrFale(u),discrimination(a),difficulty(b)
@@ -75,9 +82,6 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		 */
 
 		if (countId == 1) {
-			ArrayList<Integer> u = new ArrayList<Integer>();
-			ArrayList<Double> a = new ArrayList<Double>();
-			ArrayList<Double> b = new ArrayList<Double>();
 			u.add(trueOrFalse);
 			a.add(initialQuestion.getDiscrimination());
 			b.add(initialQuestion.getDifficulty());
@@ -86,12 +90,9 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 			session.setAttribute("b", b);
 
 		} else if (countId >= 2) {
-			@SuppressWarnings("unchecked")
-			ArrayList<Integer> u = (ArrayList<Integer>) session.getAttribute("u");
-			@SuppressWarnings("unchecked")
-			ArrayList<Double> a = (ArrayList<Double>) session.getAttribute("a");
-			@SuppressWarnings("unchecked")
-			ArrayList<Double> b = (ArrayList<Double>) session.getAttribute("b");
+			u = (ArrayList<Integer>) session.getAttribute("u");
+			a = (ArrayList<Double>) session.getAttribute("a");
+			b = (ArrayList<Double>) session.getAttribute("b");
 			u.add(trueOrFalse);
 			a.add(initialQuestion.getDiscrimination());
 			b.add(initialQuestion.getDifficulty());
@@ -101,14 +102,17 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		}
 
 		//能力値を算出する(ベイズのEAP)
+		EstimateAbility estimateThetaEAP = new EstimateAbility();
+		double thetaEAP = estimateThetaEAP.estimateTheta(u, a, b);
 
-
-
-
-
-
+		//オブジェクトの宣言
+		InitialAnswerLog initialAnswerLog = new InitialAnswerLog(0, (Integer) session.getAttribute("userId"),
+				initialQuestion.getId(), initialQuestion.getDiscrimination(), initialQuestion.getDifficulty(),
+				trueOrFalse, thetaEAP, answerList[0], answerList[1], answerList[2], answerList[3], answerItemTime);
 
 		//DBに回答情報を蓄積する
+		InitialAnswerLogDAO initialAnswerLogDAO = new InitialAnswerLogDAO();
+		initialAnswerLogDAO.insertAnswerLog(initialAnswerLog);
 
 		/*
 		 * 次に出す項目をsessionに保持する(上書き)
