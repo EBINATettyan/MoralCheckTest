@@ -12,10 +12,10 @@ public class AnswerLog {
 	private int answer2 = 0; // 解答2
 	private int answer3 = 0; // 解答3
 	private int answer4 = 0; // 解答4
-	private String answerTime = null; // 回答所要時間
+	private String answerItemTime = null; // 回答所要時間
 
 	public AnswerLog(int id, int userId, int questionId, double discrimination, double difficulty, int trueOrFalse,
-			double ability, int answer1, int answer2, int answer3, int answer4, String answerTime) {
+			double ability, int answer1, int answer2, int answer3, int answer4, String answerItemTime) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -28,7 +28,7 @@ public class AnswerLog {
 		this.answer2 = answer2;
 		this.answer3 = answer3;
 		this.answer4 = answer4;
-		this.answerTime = answerTime;
+		this.answerItemTime = answerItemTime;
 	}
 
 	public int getId() {
@@ -119,12 +119,11 @@ public class AnswerLog {
 		this.answer4 = answer4;
 	}
 
-	public String getAnswerTime() {
-		return answerTime;
+	public String getAnswerItemTime() {
+		return answerItemTime;
 	}
 
-	public void setAnswerTime(String answerTime) {
-		this.answerTime = answerTime;
+	public void setAnswerItemTime(String answerItemTime) {
+		this.answerItemTime = answerItemTime;
 	}
-
 }
