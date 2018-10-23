@@ -63,7 +63,7 @@
 							</font>
 						</div>
 						<br>
-						<form method="POST" action="SelectQuestionServlet">
+						<form method="POST" action="SelectInitialQuestionServlet">
 							<div class="well well-sm">
 								<label><input type='radio' name='answer' value='1' />&nbsp;&nbsp; <%
  	out.println(initialQuestion.getChoice1());
@@ -84,7 +84,7 @@
  	out.println(initialQuestion.getChoice4());
  %></label>
 							</div>
-							<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type="submit" class="btn btn-info btn-lg"
+							<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type="submit" class="btn btn-success btn-lg"
 								id="answer_button" value="答える">
 						</form>
 					</div>
