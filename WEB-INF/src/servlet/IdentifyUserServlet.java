@@ -1,6 +1,5 @@
 package servlet;
 
-//問題を選択し、次の画面に渡すサーブレット
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +23,8 @@ public class IdentifyUserServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		//****このservletは一番始めに読み込まれる****
 
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
@@ -50,7 +51,7 @@ public class IdentifyUserServlet extends HttpServlet {
 		 * dateToはそのservletが読み込まれた時間
 		 */
 		Calendar c = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
 		String dateTo = sdf.format(c.getTime());
 		String dateFrom = null;
 
