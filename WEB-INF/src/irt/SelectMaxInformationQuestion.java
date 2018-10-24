@@ -53,7 +53,9 @@ public class SelectMaxInformationQuestion {
 				}
 			}
 		}
-		System.out.println("最大だったやつの問題番号 " + maxInformationQuestion.getId() + " 最大情報量 " + maxInformation);
+
+		//System.out.println("最大だったやつの問題番号 " + maxInformationQuestion.getId() + " 最大情報量 " + maxInformation);
+
 		return maxInformationQuestion;
 	}
 }
