@@ -8,6 +8,19 @@
 		<welcome-file>/Public/examination/index.jsp</welcome-file>
 	</welcome-file-list>
 
+	<error-page>
+		<error-code>403</error-code>
+		<location>/Public/examination/index.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/Public/examination/index.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/Public/examination/index.jsp</location>
+	</error-page>
+
 	<servlet>
 		<servlet-name>IdentifyUserServlet</servlet-name>
 		<servlet-class>servlet.IdentifyUserServlet</servlet-class>
@@ -34,4 +47,5 @@
 		<servlet-name>SelectQuestionServlet</servlet-name>
 		<url-pattern>/Public/examination/SelectQuestionServlet</url-pattern>
 	</servlet-mapping>
+
 </web-app>

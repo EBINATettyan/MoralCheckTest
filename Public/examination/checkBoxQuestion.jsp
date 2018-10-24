@@ -20,35 +20,35 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
 			</div>
-			<nav class="collapse navbar-collapse">
-				<ul class="nav navbar-nav pull-right">
-					<li class="navbar-text"><span class="navbar_text_right_side"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; <script>
-						//localStrageに保存された受検時間を取得
-						var sec = Number(window.localStorage
-								.getItem('secLocalStrage'));
-						var min = Number(window.localStorage
-								.getItem('minLocalStrage'));
-						var hour = Number(window.localStorage
-								.getItem('hourLocalStrage'));
+		</nav>
+		<nav class="collapse navbar-collapse">
+			<ul class="nav navbar-nav pull-right">
+				<li class="navbar-text"><span class="navbar_text_right_side"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; <script>
+					//localStrageに保存された受検時間を取得
+					var sec = Number(window.localStorage
+							.getItem('secLocalStrage'));
+					var min = Number(window.localStorage
+							.getItem('minLocalStrage'));
+					var hour = Number(window.localStorage
+							.getItem('hourLocalStrage'));
 
-						// 0埋め
-						secNumber = ('0' + sec).slice(-2);
-						minNumber = ('0' + min).slice(-2);
-						hourNumber = ('0' + hour).slice(-2);
+					// 0埋め
+					secNumber = ('0' + sec).slice(-2);
+					minNumber = ('0' + min).slice(-2);
+					hourNumber = ('0' + hour).slice(-2);
 
-						//	受検時間の表示
-						document.write('<span id=timer>' + hourNumber + ':'
-								+ minNumber + ':' + secNumber + '</span>');
-					</script> </span></li>
-				</ul>
-			</nav>
+					//	受検時間の表示
+					document.write('<span id=timer>' + hourNumber + ':'
+							+ minNumber + ':' + secNumber + '</span>');
+				</script> </span></li>
+			</ul>
 		</nav>
 		<div class="row">
 			<div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<font size="5"> <%
- 	out.println(countId + "問目<br>");
+ 	out.println(countId + "問目");
  %>
 						</font>
 					</div>
