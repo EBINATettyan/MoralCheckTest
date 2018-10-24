@@ -2,10 +2,9 @@ package servlet;
 
 //問題を選択し、次の画面に渡すサーブレット
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +26,7 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	@SuppressWarnings({ "unchecked", "null" })
-
+	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
@@ -38,12 +36,13 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		int countId = Integer.parseInt(request.getParameter("countId"));
 
 		//項目所要時間を計算する
-		String dateFrom = (String) session.getAttribute("dateTo");
-		Calendar c = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
-		String dateTo = sdf.format(c.getTime());
-		long diff = Long.parseLong(dateTo) - Long.parseLong(dateFrom);
+		Date date = new Date();
+		long dateTo = date.getTime();
+		long dateFrom = (long) session.getAttribute("dateTo");
+		long diff = (dateTo - dateFrom) / 1000;
 		String answerItemTime = String.valueOf(diff);
+
+		System.out.println("項目所要時間：" + answerItemTime);
 
 		/*
 		 * 問題に正答しているかどうかを判別
@@ -73,10 +72,12 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 			trueOrFalse = 1;
 		}
 
-		ArrayList<Integer> u = null;
-		ArrayList<Double> a = null;
-		ArrayList<Double> b = null;
-		ArrayList<Integer> idList = null;
+		System.out.println("正答or誤答：" + trueOrFalse);
+
+		ArrayList<Integer> u = new ArrayList<Integer>();
+		ArrayList<Double> a = new ArrayList<Double>();
+		ArrayList<Double> b = new ArrayList<Double>();
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		/*
 		 * 能力値を算出するために必要な回答履歴をsessionで保持する
 		 * 必要な変数は、trueOrFale(u),discrimination(a),difficulty(b)

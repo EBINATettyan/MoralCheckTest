@@ -1,8 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +31,7 @@ public class IdentifyUserServlet extends HttpServlet {
 		//アクセスログにアクセスし、テストを使い始めたこと、何番目の使用者かを保持する
 		AccessLogDAO accessLogDAO = new AccessLogDAO();
 		int userId = accessLogDAO.identifyUser();
-		System.out.println("現在のUSERID：" + (userId+1) );
+		System.out.println("現在のUSERID：" + (userId + 1));
 
 		//アクセスログの新規登録
 		accessLogDAO.addAccessLog(userId + 1);
@@ -50,10 +49,9 @@ public class IdentifyUserServlet extends HttpServlet {
 		 * 前のページでのdateToが次のページでのdateFromになる
 		 * dateToはそのservletが読み込まれた時間
 		 */
-		Calendar c = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/HH:mm:ss");
-		String dateTo = sdf.format(c.getTime());
-		String dateFrom = null;
+		Date date = new Date();
+		long dateTo = date.getTime();
+		long dateFrom = 0;
 
 		//userIdを+1したものが、システム利用者のuserId
 		session.setAttribute("userId", userId + 1);
