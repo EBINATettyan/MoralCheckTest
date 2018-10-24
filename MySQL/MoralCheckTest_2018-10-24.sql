@@ -7,7 +7,7 @@
 #
 # ホスト: 127.0.0.1 (MySQL 5.7.10)
 # データベース: MoralCheckTest
-# 作成時刻: 2018-10-22 12:54:39 +0000
+# 作成時刻: 2018-10-24 09:56:03 +0000
 # ************************************************************
 
 
@@ -30,20 +30,11 @@ CREATE TABLE `access_logs` (
   `user_id` int(10) NOT NULL,
   `start_time` text NOT NULL COMMENT '始めた時間',
   `end_time` text COMMENT '終わった時間',
-  `start_end_time` text COMMENT 'start_timeとend_timeの差分',
+  `answer_all_time` double DEFAULT NULL COMMENT 'resultsのanswer_all_timeと同じ',
+  `item_list` text COMMENT '問いた問題のリスト',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='正誤判定の結果';
 
-LOCK TABLES `access_logs` WRITE;
-/*!40000 ALTER TABLE `access_logs` DISABLE KEYS */;
-
-INSERT INTO `access_logs` (`id`, `user_id`, `start_time`, `end_time`, `start_end_time`)
-VALUES
-	(1,1,'test','test','test'),
-	(2,2,'2018/10/22/(月)/21:49',NULL,NULL);
-
-/*!40000 ALTER TABLE `access_logs` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # テーブルのダンプ answer_logs
@@ -58,12 +49,13 @@ CREATE TABLE `answer_logs` (
   `discrimination` double DEFAULT NULL,
   `difficulty` double DEFAULT NULL,
   `true_or_false` tinyint(1) DEFAULT NULL,
-  `ability` float DEFAULT NULL COMMENT '能力値(情報モラル力)',
+  `ability` double DEFAULT NULL COMMENT '能力値(情報モラル力)',
+  `sd` double DEFAULT NULL COMMENT '事後標準偏差',
   `answer1` tinyint(1) DEFAULT NULL,
   `answer2` tinyint(1) DEFAULT NULL,
   `answer3` tinyint(1) DEFAULT NULL,
   `answer4` tinyint(1) DEFAULT NULL,
-  `answer_item_time` text NOT NULL COMMENT '項目所要時間',
+  `answer_item_time` double NOT NULL COMMENT '項目所要時間',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='正誤判定の結果';
 
@@ -81,12 +73,13 @@ CREATE TABLE `initial_answer_logs` (
   `discrimination` double NOT NULL,
   `difficulty` double NOT NULL,
   `true_or_false` tinyint(1) NOT NULL,
-  `ability` float DEFAULT NULL COMMENT '能力値(情報モラル力)',
+  `ability` double DEFAULT NULL COMMENT '能力値(情報モラル力)',
+  `sd` double DEFAULT NULL COMMENT '事後標準偏差',
   `answer1` tinyint(1) NOT NULL,
   `answer2` tinyint(1) NOT NULL,
   `answer3` tinyint(1) NOT NULL,
   `answer4` tinyint(1) NOT NULL,
-  `answer_item_time` text NOT NULL COMMENT '項目所要時間',
+  `answer_item_time` double NOT NULL COMMENT '項目所要時間',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='正誤判定の結果';
 
@@ -270,9 +263,9 @@ DROP TABLE IF EXISTS `results`;
 CREATE TABLE `results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
-  `initial_ability` float NOT NULL,
-  `ability` float NOT NULL,
-  `answer_all_time` text NOT NULL,
+  `initial_ability` double NOT NULL,
+  `ability` double NOT NULL,
+  `answer_all_time` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='解答を終了した結果';
 
