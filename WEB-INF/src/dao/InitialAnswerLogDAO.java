@@ -9,35 +9,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.AnswerLog;
+import beans.InitialAnswerLog;
 import utility.DriverAccessor;
 
-public class AnswerLogDAO extends DriverAccessor {
+public class InitialAnswerLogDAO extends DriverAccessor {
 
 	// 解答を蓄積する
-	public void insertAnswerLog(AnswerLog answerLog) {
+	public void insertAnswerLog(InitialAnswerLog initialAnswerLog) {
 
 		Connection con = null;
 		con = createConnection();
 
 		try {
 
-			String sql = "INSERT INTO answer_logs VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO initial_answer_logs VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement stmt = con.prepareStatement(sql);
 
-			stmt.setInt(1, answerLog.getId());
-			stmt.setInt(2, answerLog.getUserId());
-			stmt.setInt(3, answerLog.getQuestionId());
-			stmt.setDouble(4, answerLog.getDiscrimination());
-			stmt.setDouble(5, answerLog.getDifficulty());
-			stmt.setInt(6, answerLog.getTrueOrFalse());
-			stmt.setDouble(7, answerLog.getAbility());
-			stmt.setDouble(8, answerLog.getSd());
-			stmt.setInt(9, answerLog.getAnswer1());
-			stmt.setInt(10, answerLog.getAnswer2());
-			stmt.setInt(11, answerLog.getAnswer3());
-			stmt.setInt(12, answerLog.getAnswer4());
-			stmt.setDouble(13, answerLog.getAnswerItemTime());
+			stmt.setInt(1, initialAnswerLog.getId());
+			stmt.setInt(2, initialAnswerLog.getUserId());
+			stmt.setInt(3, initialAnswerLog.getQuestionId());
+			stmt.setDouble(4, initialAnswerLog.getDiscrimination());
+			stmt.setDouble(5, initialAnswerLog.getDifficulty());
+			stmt.setInt(6, initialAnswerLog.getTrueOrFalse());
+			stmt.setDouble(7, initialAnswerLog.getAbility());
+			stmt.setDouble(8, initialAnswerLog.getSd());
+			stmt.setInt(9, initialAnswerLog.getAnswer1());
+			stmt.setInt(10, initialAnswerLog.getAnswer2());
+			stmt.setInt(11, initialAnswerLog.getAnswer3());
+			stmt.setInt(12, initialAnswerLog.getAnswer4());
+			stmt.setDouble(13, initialAnswerLog.getAnswerItemTime());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -56,7 +57,8 @@ public class AnswerLogDAO extends DriverAccessor {
 	public List<AnswerLog> selectAnswerLogByUser(int userId, int section) {
 		try {
 
-			String sql = "SELECT * FROM answer_logs WHERE user_id ='" + userId + "' AND section='" + section + "';";
+			String sql = "SELECT * FROM initial_answer_logs WHERE user_id ='" + userId + "' AND section='" + section
+					+ "';";
 
 			Connection con = null;
 			con = createConnection();

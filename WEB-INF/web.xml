@@ -17,4 +17,13 @@
 		<url-pattern>/Public/examination/IdentifyUserServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>SelectInitialQuestionServlet</servlet-name>
+		<servlet-class>servlet.SelectInitialQuestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectInitialQuestionServlet</servlet-name>
+		<url-pattern>/Public/examination/SelectInitialQuestionServlet</url-pattern>
+	</servlet-mapping>
+
 </web-app>

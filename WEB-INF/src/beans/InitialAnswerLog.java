@@ -7,15 +7,17 @@ public class InitialAnswerLog {
 	private double discrimination = 0.0;
 	private double difficulty = 0.0;
 	private int trueOrFalse = 0; // 正誤
-	private double ability = 0; //nullもOK
+	private double ability = 0;
+	private double sd = 0; // 事後標準偏差
 	private int answer1 = 0; // 解答1
 	private int answer2 = 0; // 解答2
 	private int answer3 = 0; // 解答3
 	private int answer4 = 0; // 解答4
-	private String answerTime = null; // 回答所要時間
+	private double answerItemTime = 0; // 回答所要時間
 
-	public InitialAnswerLog(int id, int userId, int questionId, double discrimination, double difficulty, int trueOrFalse,
-			double ability, int answer1, int answer2, int answer3, int answer4, String answerTime) {
+	public InitialAnswerLog(int id, int userId, int questionId, double discrimination, double difficulty,
+			int trueOrFalse, double ability, double sd, int answer1, int answer2, int answer3, int answer4,
+			double answerItemTime) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -24,11 +26,12 @@ public class InitialAnswerLog {
 		this.difficulty = difficulty;
 		this.trueOrFalse = trueOrFalse;
 		this.ability = ability;
+		this.sd = sd;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
 		this.answer3 = answer3;
 		this.answer4 = answer4;
-		this.answerTime = answerTime;
+		this.answerItemTime = answerItemTime;
 	}
 
 	public int getId() {
@@ -87,6 +90,14 @@ public class InitialAnswerLog {
 		this.ability = ability;
 	}
 
+	public double getSd() {
+		return sd;
+	}
+
+	public void setSd(double sd) {
+		this.sd = sd;
+	}
+
 	public int getAnswer1() {
 		return answer1;
 	}
@@ -119,12 +130,12 @@ public class InitialAnswerLog {
 		this.answer4 = answer4;
 	}
 
-	public String getAnswerTime() {
-		return answerTime;
+	public double getAnswerItemTime() {
+		return answerItemTime;
 	}
 
-	public void setAnswerTime(String answerTime) {
-		this.answerTime = answerTime;
+	public void setAnswerItemTime(double answerItemTime) {
+		this.answerItemTime = answerItemTime;
 	}
 
 }

@@ -5,15 +5,17 @@ public class AccessLog {
 	private int userId = 0; // ユーザID
 	private String startTime = null; // 開始時間
 	private String endTime = null; // 終了時間
-	private String startEndTime = null; // 合計時間
+	private double answerAllTime = 0; // 合計時間
+	private String itemList = null; // 問いた項目のリスト
 
-	public AccessLog(int id, int userId, String startTime, String endTime, String startEndTime) {
+	public AccessLog(int id, int userId, String startTime, String endTime, double answerAllTime, String itemList) {
 		super();
 		this.id = id;
 		this.userId = userId;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.startEndTime = startEndTime;
+		this.answerAllTime = answerAllTime;
+		this.itemList = itemList;
 	}
 
 	public int getId() {
@@ -48,12 +50,20 @@ public class AccessLog {
 		this.endTime = endTime;
 	}
 
-	public String getStartEndTime() {
-		return startEndTime;
+	public double getAnswerAllTime() {
+		return answerAllTime;
 	}
 
-	public void setStartEndTime(String startEndTime) {
-		this.startEndTime = startEndTime;
+	public void setAnswerAllTime(double answerAllTime) {
+		this.answerAllTime = answerAllTime;
+	}
+
+	public String getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(String itemList) {
+		this.itemList = itemList;
 	}
 
 }
