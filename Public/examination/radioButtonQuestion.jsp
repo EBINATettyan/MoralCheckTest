@@ -18,7 +18,7 @@
 	<div class="container">
 		<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall">
 			<div class="navbar-header">
-				<a class="navbar-brand" id="navbar_text_left_side"><img src="../../img/titleSmall.png"></a>
+				<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
 			</div>
 			<nav class="collapse navbar-collapse">
 				<ul class="nav navbar-nav pull-right">
@@ -45,7 +45,7 @@
 		</nav>
 		<div class="row">
 			<div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-				<div class="panel panel-info">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<font size="5"> <%
  	out.println(countId + "問目");
@@ -84,7 +84,7 @@
  	out.println(question.getChoice4());
  %></label>
 							</div>
-							<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type="submit" class="btn btn-primary btn-lg"
+							<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type="submit" class="btn btn-success btn-lg"
 								id="answer_button" value="答える">
 						</form>
 					</div>
