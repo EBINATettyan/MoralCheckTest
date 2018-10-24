@@ -14,9 +14,11 @@ import javax.servlet.http.HttpSession;
 
 import beans.InitialAnswerLog;
 import beans.InitialQuestion;
+import beans.Question;
 import dao.InitialAnswerLogDAO;
 import dao.InitialQuestionDAO;
 import irt.EstimateAbility;
+import irt.SelectMaxInformationQuestion;
 
 public class SelectInitialQuestionServlet extends HttpServlet {
 
@@ -131,18 +133,40 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		InitialAnswerLogDAO initialAnswerLogDAO = new InitialAnswerLogDAO();
 		initialAnswerLogDAO.insertAnswerLog(initialAnswerLog);
 
+		//初期であろうとなかろうと関係のあるsession等はここで宣言する
+		session.setAttribute("dateTo", dateTo);
+		session.setAttribute("dateFrom", dateFrom);
+		request.setAttribute("countId", (countId + 1));
+
 		/*
+		 * countId == 5であったら、初期項目受験は終了
 		 * 次に出す項目をsessionに保持する(上書き)
 		 * 項目を更新する
 		 */
-		InitialQuestionDAO initialQuestionDAO = new InitialQuestionDAO();
-		initialQuestion = initialQuestionDAO.selectInitialQuestion((countId + 1));
-		session.setAttribute("dateTo", dateTo);
-		session.setAttribute("dateFrom", dateFrom);
-		session.setAttribute("initialQuestion", initialQuestion);
+		if (countId < 5) {
+			InitialQuestionDAO initialQuestionDAO = new InitialQuestionDAO();
+			initialQuestion = initialQuestionDAO.selectInitialQuestion((countId + 1));
+			session.setAttribute("initialQuestion", initialQuestion);
+			getServletContext().getRequestDispatcher("/Public/examination/initialQuestion.jsp").forward(request,
+					response);
+		} else if (countId == 5) {
+			session.setAttribute("preAbility", returnList.get(0));
+			session.setAttribute("initialAbility", returnList.get(0));
 
-		request.setAttribute("countId", (countId + 1));
+			//情報量最大の項目を受け取る
+			Question maxInformationQuestion = new Question();
+			SelectMaxInformationQuestion select = new SelectMaxInformationQuestion();
+			maxInformationQuestion = select.selectMaxInformationQuestion(returnList.get(0), idList);
+			session.setAttribute("question", maxInformationQuestion);
 
-		getServletContext().getRequestDispatcher("/Public/examination/initialQuestion.jsp").forward(request, response);
+			// 問題のタイプが単数選択であれば、ラジオボタンの画面へ。複数選択であれば、チェックリストの画面へ。
+			if (maxInformationQuestion.getTypeId() == 0) {
+				getServletContext().getRequestDispatcher("/Public/examination/radioButtonQuestion.jsp").forward(request,
+						response);
+			} else {
+				getServletContext().getRequestDispatcher("/Public/examination/checkBoxQuestion.jsp").forward(request,
+						response);
+			}
+		}
 	}
 }
