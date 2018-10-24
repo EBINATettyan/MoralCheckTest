@@ -26,4 +26,12 @@
 		<url-pattern>/Public/examination/SelectInitialQuestionServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>SelectQuestionServlet</servlet-name>
+		<servlet-class>servlet.SelectQuestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectQuestionServlet</servlet-name>
+		<url-pattern>/Public/examination/SelectQuestionServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

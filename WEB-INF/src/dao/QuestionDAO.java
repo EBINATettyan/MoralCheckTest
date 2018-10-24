@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import beans.Question;
 import utility.DriverAccessor;
@@ -13,7 +12,7 @@ import utility.DriverAccessor;
 public class QuestionDAO extends DriverAccessor {
 
 	// 問題一覧を検索する
-	public List<Question> selectQuestionAll() {
+	public ArrayList<Question> selectQuestionAll() {
 		Connection con = null;
 		con = createConnection();
 
@@ -23,7 +22,7 @@ public class QuestionDAO extends DriverAccessor {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 
-			List<Question> questionsList = new ArrayList<Question>();
+			ArrayList<Question> questionsList = new ArrayList<Question>();
 			while (rs.next()) {
 				Question question = new Question(rs.getInt("id"), rs.getInt("type_id"), rs.getString("content"),
 						rs.getString("choice1"), rs.getString("choice2"), rs.getString("choice3"),
