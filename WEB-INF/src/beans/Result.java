@@ -5,7 +5,16 @@ public class Result {
 	private int userId = 0; // アカウントID
 	private double initialAbility = 0;
 	private double ability = 0;
-	private String answerAllTime = null;
+	private double answerAllTime = 0;
+
+	public Result(int id, int userId, double initialAbility, double ability, double answerAllTime) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.initialAbility = initialAbility;
+		this.ability = ability;
+		this.answerAllTime = answerAllTime;
+	}
 
 	public int getId() {
 		return id;
@@ -39,21 +48,11 @@ public class Result {
 		this.ability = ability;
 	}
 
-	public String getAnswerAllTime() {
+	public double getAnswerAllTime() {
 		return answerAllTime;
 	}
 
-	public void setAnswerAllTime(String answerAllTime) {
+	public void setAnswerAllTime(double answerAllTime) {
 		this.answerAllTime = answerAllTime;
 	}
-
-	public Result(int id, int userId, double initialAbility, double ability, String answerAllTime) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.initialAbility = initialAbility;
-		this.ability = ability;
-		this.answerAllTime = answerAllTime;
-	}
-
 }
