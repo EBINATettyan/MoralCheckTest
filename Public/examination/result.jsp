@@ -17,14 +17,12 @@
 	<div class="container">
 		<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall">
 			<div class="navbar-header">
-				<a class="navbar-brand" id="navbar_text_left_side"> <img src="../../img/titleSmall.png">
-				</a>
+				<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
 			</div>
 		</nav>
+
 		<div class="row">
-			<!-- main -->
 			<div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-				<!-- apply custom style -->
 				<div class="page-header" style="margin-top: -20px; padding-bottom: 0px;">
 					<h1>
 						結果 <small> 受検時間 <script>
@@ -35,16 +33,13 @@
 									.getItem('minLocalStrage'));
 							var hour = Number(window.localStorage
 									.getItem('hourLocalStrage'));
-
 							// 0埋め
 							secNumber = ('0' + sec).slice(-2);
 							minNumber = ('0' + min).slice(-2);
 							hourNumber = ('0' + hour).slice(-2);
-
 							//	受検時間の表示
 							document.write(hourNumber + ':' + minNumber + ':'
 									+ secNumber);
-
 							//localStrageに保存されている値をクリアにする．
 							window.localStorage.clear();
 						</script>
@@ -53,9 +48,9 @@
 				</div>
 				<h2>
 					あなたの情報モラルレベルは<span style="font-size: xx-large;">&nbsp;&nbsp;<span style="color: #FF1493;"> <%
- 	if (postAbility < 2.0) {
+ 	if (postAbility < 1.0) {
  		out.println("小学生レベル");
- 	} else if (postAbility >= 2.0 && postAbility < 3.3) {
+ 	} else if (postAbility >= 1.0 && postAbility < 2.5) {
  		out.println("中学生レベル");
  	} else {
  		out.println("高校生レベル");
