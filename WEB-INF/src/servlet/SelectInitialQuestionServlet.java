@@ -76,6 +76,7 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		ArrayList<Integer> u = null;
 		ArrayList<Double> a = null;
 		ArrayList<Double> b = null;
+		ArrayList<Integer> idList = null;
 		/*
 		 * 能力値を算出するために必要な回答履歴をsessionで保持する
 		 * 必要な変数は、trueOrFale(u),discrimination(a),difficulty(b)
@@ -86,20 +87,24 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 			u.add(trueOrFalse);
 			a.add(initialQuestion.getDiscrimination());
 			b.add(initialQuestion.getDifficulty());
+			idList.add(initialQuestion.getId());
 			session.setAttribute("u", u);
 			session.setAttribute("a", a);
 			session.setAttribute("b", b);
-
+			session.setAttribute("idList", idList);
 		} else if (countId >= 2) {
 			u = (ArrayList<Integer>) session.getAttribute("u");
 			a = (ArrayList<Double>) session.getAttribute("a");
 			b = (ArrayList<Double>) session.getAttribute("b");
+			idList = (ArrayList<Integer>) session.getAttribute("idList");
 			u.add(trueOrFalse);
 			a.add(initialQuestion.getDiscrimination());
 			b.add(initialQuestion.getDifficulty());
+			idList.add(initialQuestion.getId());
 			session.setAttribute("u", u);
 			session.setAttribute("a", a);
 			session.setAttribute("b", b);
+			session.setAttribute("idList", idList);
 		}
 
 		/*
