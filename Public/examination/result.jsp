@@ -168,7 +168,7 @@
 		series : [ {
 			//name: null,
 			data : [
-<%out.println(ability);%>
+<%out.println(postAbility);%>
 	]
 		//入力した値を出力する．//
 		} ]
