@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%
-	double ability = (double) request.getAttribute("postAbility");
+	double postAbility = (double) request.getAttribute("postAbility");
 %>
 
 <!DOCTYPE html>
@@ -53,9 +53,9 @@
 				</div>
 				<h2>
 					あなたの情報モラルレベルは<span style="font-size: xx-large;">&nbsp;&nbsp;<span style="color: #FF1493;"> <%
- 	if (ability < 2.0) {
+ 	if (postAbility < 2.0) {
  		out.println("小学生レベル");
- 	} else if (ability >= 2.0 && ability < 3.3) {
+ 	} else if (postAbility >= 2.0 && postAbility < 3.3) {
  		out.println("中学生レベル");
  	} else {
  		out.println("高校生レベル");
