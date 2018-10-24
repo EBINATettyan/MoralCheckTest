@@ -41,7 +41,7 @@ public class AccessLogDAO extends DriverAccessor {
 	}
 
 	//アクセスログの追加
-	public void addAccessLog(int userId) {
+	public void insertAccessLog(int userId) {
 
 		/*
 		 * フォーマットパターンを指定して表示する
@@ -72,4 +72,33 @@ public class AccessLogDAO extends DriverAccessor {
 		}
 	}
 
+	//終了時によるアクセスログの更新
+	public void updateAccessLog(int userId, double answerAllTime, String itemList) {
+
+		/*
+		 * フォーマットパターンを指定して表示する
+		 * 今回は、2018/10/16(火)/10:10
+		 */
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/(E)/HH:mm:ss");
+		String endTime = sdf.format(c.getTime());
+
+		Connection con = null;
+		con = createConnection();
+
+		try {
+			String sql = "UPDATE access_logs SET end_time = ?, answer_all_time = ?, item_list = ? WHERE user_id = ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, endTime);
+			stmt.setDouble(2, answerAllTime);
+			stmt.setString(3, itemList);
+			stmt.setInt(4, userId);
+			stmt.executeUpdate();
+			stmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		}
+	}
 }
