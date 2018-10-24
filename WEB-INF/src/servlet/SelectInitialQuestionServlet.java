@@ -42,8 +42,6 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		long diff = (dateTo - dateFrom) / 1000;
 		String answerItemTime = String.valueOf(diff);
 
-		System.out.println("項目所要時間：" + answerItemTime);
-
 		/*
 		 * 問題に正答しているかどうかを判別
 		 * まず、sessionで保持している、受験者が解いた問題を取り出す
@@ -71,8 +69,6 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		} else {
 			trueOrFalse = 1;
 		}
-
-		System.out.println("正答or誤答：" + trueOrFalse);
 
 		ArrayList<Integer> u = new ArrayList<Integer>();
 		ArrayList<Double> a = new ArrayList<Double>();

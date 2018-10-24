@@ -76,8 +76,6 @@ public class EstimateAbility {
 		}
 		sd = Math.sqrt(sd);
 
-		System.out.println("推定された能力値：" + eapTheta + "//推定されたSD" + sd);
-
 		//戻り値の宣言
 		ArrayList<Double> returnList = new ArrayList<Double>();
 		returnList.add(eapTheta);
