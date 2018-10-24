@@ -31,7 +31,6 @@ public class IdentifyUserServlet extends HttpServlet {
 		//アクセスログにアクセスし、テストを使い始めたこと、何番目の使用者かを保持する
 		AccessLogDAO accessLogDAO = new AccessLogDAO();
 		int userId = accessLogDAO.identifyUser();
-		System.out.println("現在のUSERID：" + (userId + 1));
 
 		//アクセスログの新規登録
 		accessLogDAO.addAccessLog(userId + 1);
