@@ -32,7 +32,7 @@ public class EstimateAbility {
 
 		double Dsum = 0.0; // 分母の和
 		double eapTheta = 0.0; // 能力値
-		double gm = 0.0; // 事後分布の重み
+		double gm[] = new double[Wm.length]; // 事後分布の重み
 		double sd = 0.0; // 事後標準偏差
 
 		// 尤度関数を求める
@@ -68,11 +68,11 @@ public class EstimateAbility {
 
 		//事後分布の重みgmを求める
 		for (int l = 0; l < Wm.length; l++) {
-			gm += (Numerator[l] / Xm[l]) / Dsum;
+			gm[l] = (Numerator[l] / Xm[l]) / Dsum;
 		}
 
 		for (int z = 0; z < Xm.length; z++) {
-			sd += Math.pow((Xm[z] - eapTheta), 2) * gm;
+			sd += Math.pow((Xm[z] - eapTheta), 2) * gm[z];
 		}
 		sd = Math.sqrt(sd);
 
