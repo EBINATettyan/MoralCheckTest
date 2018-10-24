@@ -8,6 +8,7 @@ public class AnswerLog {
 	private double difficulty = 0.0;
 	private int trueOrFalse = 0; // 正誤
 	private double ability = 0;
+	private double sd = 0; // 事後標準偏差
 	private int answer1 = 0; // 解答1
 	private int answer2 = 0; // 解答2
 	private int answer3 = 0; // 解答3
@@ -15,7 +16,7 @@ public class AnswerLog {
 	private String answerItemTime = null; // 回答所要時間
 
 	public AnswerLog(int id, int userId, int questionId, double discrimination, double difficulty, int trueOrFalse,
-			double ability, int answer1, int answer2, int answer3, int answer4, String answerItemTime) {
+			double ability, double sd, int answer1, int answer2, int answer3, int answer4, String answerItemTime) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -24,6 +25,7 @@ public class AnswerLog {
 		this.difficulty = difficulty;
 		this.trueOrFalse = trueOrFalse;
 		this.ability = ability;
+		this.sd = sd;
 		this.answer1 = answer1;
 		this.answer2 = answer2;
 		this.answer3 = answer3;
@@ -87,6 +89,14 @@ public class AnswerLog {
 		this.ability = ability;
 	}
 
+	public double getSd() {
+		return sd;
+	}
+
+	public void setSd(double sd) {
+		this.sd = sd;
+	}
+
 	public int getAnswer1() {
 		return answer1;
 	}
@@ -126,4 +136,5 @@ public class AnswerLog {
 	public void setAnswerItemTime(String answerItemTime) {
 		this.answerItemTime = answerItemTime;
 	}
+
 }

@@ -28,6 +28,7 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 	}
 
 	@SuppressWarnings({ "unchecked", "null" })
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
@@ -101,14 +102,18 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 			session.setAttribute("b", b);
 		}
 
-		//能力値を算出する(ベイズのEAP)
+		/*
+		 * 能力値を算出する(ベイズのEAP)
+		 * returnListの一番目は能力値、二番目は事後標準偏差
+		 */
 		EstimateAbility estimateThetaEAP = new EstimateAbility();
-		double thetaEAP = estimateThetaEAP.estimateTheta(u, a, b);
+		ArrayList<Double> returnList = estimateThetaEAP.estimateTheta(u, a, b);
 
 		//オブジェクトの宣言
 		InitialAnswerLog initialAnswerLog = new InitialAnswerLog(0, (Integer) session.getAttribute("userId"),
 				initialQuestion.getId(), initialQuestion.getDiscrimination(), initialQuestion.getDifficulty(),
-				trueOrFalse, thetaEAP, answerList[0], answerList[1], answerList[2], answerList[3], answerItemTime);
+				trueOrFalse, returnList.get(0), returnList.get(1), answerList[0], answerList[1], answerList[2],
+				answerList[3], answerItemTime);
 
 		//DBに回答情報を蓄積する
 		InitialAnswerLogDAO initialAnswerLogDAO = new InitialAnswerLogDAO();

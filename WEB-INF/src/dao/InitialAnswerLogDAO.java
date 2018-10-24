@@ -15,29 +15,30 @@ import utility.DriverAccessor;
 public class InitialAnswerLogDAO extends DriverAccessor {
 
 	// 解答を蓄積する
-	public void insertAnswerLog(InitialAnswerLog answerLog) {
+	public void insertAnswerLog(InitialAnswerLog initialAnswerLog) {
 
 		Connection con = null;
 		con = createConnection();
 
 		try {
 
-			String sql = "INSERT INTO initial_answer_logs VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO initial_answer_logs VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			PreparedStatement stmt = con.prepareStatement(sql);
 
-			stmt.setInt(1, answerLog.getId());
-			stmt.setInt(2, answerLog.getUserId());
-			stmt.setInt(3, answerLog.getQuestionId());
-			stmt.setDouble(4, answerLog.getDiscrimination());
-			stmt.setDouble(5, answerLog.getDifficulty());
-			stmt.setInt(6, answerLog.getTrueOrFalse());
-			stmt.setDouble(7, answerLog.getAbility());
-			stmt.setInt(8, answerLog.getAnswer1());
-			stmt.setInt(9, answerLog.getAnswer2());
-			stmt.setInt(10, answerLog.getAnswer3());
-			stmt.setInt(11, answerLog.getAnswer4());
-			stmt.setString(12, answerLog.getAnswerItemTime());
+			stmt.setInt(1, initialAnswerLog.getId());
+			stmt.setInt(2, initialAnswerLog.getUserId());
+			stmt.setInt(3, initialAnswerLog.getQuestionId());
+			stmt.setDouble(4, initialAnswerLog.getDiscrimination());
+			stmt.setDouble(5, initialAnswerLog.getDifficulty());
+			stmt.setInt(6, initialAnswerLog.getTrueOrFalse());
+			stmt.setDouble(7, initialAnswerLog.getAbility());
+			stmt.setDouble(8, initialAnswerLog.getSd());
+			stmt.setInt(9, initialAnswerLog.getAnswer1());
+			stmt.setInt(10, initialAnswerLog.getAnswer2());
+			stmt.setInt(11, initialAnswerLog.getAnswer3());
+			stmt.setInt(12, initialAnswerLog.getAnswer4());
+			stmt.setString(13, initialAnswerLog.getAnswerItemTime());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -69,7 +70,7 @@ public class InitialAnswerLogDAO extends DriverAccessor {
 			while (rs.next()) {
 				AnswerLog answerLog = new AnswerLog(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("question_id"),
 						rs.getDouble("discrimination"), rs.getDouble("difficulty"), rs.getInt("true_or_false"),
-						rs.getDouble("ability"), rs.getInt("answer1"), rs.getInt("answer2"),
+						rs.getDouble("ability"), rs.getDouble("sd"), rs.getInt("answer1"), rs.getInt("answer2"),
 						rs.getInt("answer3"), rs.getInt("answer4"), rs.getString("answer_item_time"));
 				answerLogList.add(answerLog);
 			}

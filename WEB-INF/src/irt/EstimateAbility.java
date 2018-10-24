@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 public class EstimateAbility {
 
-	public Double estimateTheta(ArrayList<Integer> u, ArrayList<Double> a, ArrayList<Double> b) {
+	//一番目が能力値で、二番目が事後標準偏差
+	public ArrayList<Double> estimateTheta(ArrayList<Integer> u, ArrayList<Double> a, ArrayList<Double> b) {
 
 		// 求積点
 		double[] Xm = { -4.15989, -3.92869, -3.69862, -3.46959, -3.24151, -3.01432, -2.78794, -2.5623, -2.33732,
-				-2.11295, -1.88912, -1.66576, -1.44283, -1.22025, -0.997977, -0.775951, -0.554115, -0.332415, -0.110796,
-				0.110796, 0.332415, 0.554115, 0.775951, 0.997977, 1.22025, 1.44283, 1.66576, 1.88912, 2.11295, 2.33732,
+				-2.11295, -1.88912, -1.66576, -1.44283, -1.22025, -0.997977, -0.775951, -0.554115, -0.332415,
+				-0.110796,
+				0.110796, 0.332415, 0.554115, 0.775951, 0.997977, 1.22025, 1.44283, 1.66576, 1.88912, 2.11295,
+				2.33732,
 				2.5623, 2.78794, 3.01432, 3.24151, 3.46959, 3.69862, 3.92869, 4.15989 };
 
 		// 総和=1となるように基準化された重み
@@ -29,6 +32,8 @@ public class EstimateAbility {
 
 		double Dsum = 0.0; // 分母の和
 		double eapTheta = 0.0; // 能力値
+		double gm = 0.0; // 事後分布の重み
+		double sd = 0.0; // 事後標準偏差
 
 		// 尤度関数を求める
 		for (i = 0; i < Xm.length; i++) {
@@ -60,7 +65,23 @@ public class EstimateAbility {
 		for (int x = 0; x < Xm.length; x++) {
 			eapTheta += Numerator[x] / Dsum;
 		}
-		System.out.println("推定された能力値" + eapTheta);
-		return eapTheta;
+
+		//事後分布の重みgmを求める
+		for (int l = 0; l < Wm.length; l++) {
+			gm += (Numerator[l] / Xm[l]) / Dsum;
+		}
+
+		for (int z = 0; z < Xm.length; z++) {
+			sd += Math.pow((Xm[z] - eapTheta), 2) * gm;
+		}
+		sd = Math.sqrt(sd);
+
+		System.out.println("推定された能力値：" + eapTheta + "//推定されたSD" + sd);
+
+		//戻り値の宣言
+		ArrayList<Double> returnList = new ArrayList<Double>();
+		returnList.add(eapTheta);
+		returnList.add(sd);
+		return returnList;
 	}
 }
