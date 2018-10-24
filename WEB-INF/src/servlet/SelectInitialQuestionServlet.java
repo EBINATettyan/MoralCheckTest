@@ -132,6 +132,7 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		session.setAttribute("initialQuestion", initialQuestion);
 
 		request.setAttribute("countId", (countId + 1));
+
 		getServletContext().getRequestDispatcher("/Public/examination/initialQuestion.jsp").forward(request, response);
 	}
 }
