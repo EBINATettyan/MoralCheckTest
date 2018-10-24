@@ -74,6 +74,8 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		ArrayList<Double> a = new ArrayList<Double>();
 		ArrayList<Double> b = new ArrayList<Double>();
 		ArrayList<Integer> idList = new ArrayList<Integer>();
+		String idListForDB = null;
+
 		/*
 		 * 能力値を算出するために必要な回答履歴をsessionで保持する
 		 * 必要な変数は、trueOrFale(u),discrimination(a),difficulty(b)
@@ -85,23 +87,31 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 			a.add(initialQuestion.getDiscrimination());
 			b.add(initialQuestion.getDifficulty());
 			idList.add(initialQuestion.getId());
+			idListForDB = String.valueOf(initialQuestion.getId());
+
 			session.setAttribute("u", u);
 			session.setAttribute("a", a);
 			session.setAttribute("b", b);
 			session.setAttribute("idList", idList);
+			session.setAttribute("idListForDB", idListForDB);
 		} else if (countId >= 2) {
 			u = (ArrayList<Integer>) session.getAttribute("u");
 			a = (ArrayList<Double>) session.getAttribute("a");
 			b = (ArrayList<Double>) session.getAttribute("b");
 			idList = (ArrayList<Integer>) session.getAttribute("idList");
+			idListForDB = (String) session.getAttribute("idListForDB");
+
 			u.add(trueOrFalse);
 			a.add(initialQuestion.getDiscrimination());
 			b.add(initialQuestion.getDifficulty());
 			idList.add(initialQuestion.getId());
+			idListForDB = idListForDB + ":" + initialQuestion.getId();
+
 			session.setAttribute("u", u);
 			session.setAttribute("a", a);
 			session.setAttribute("b", b);
 			session.setAttribute("idList", idList);
+			session.setAttribute("idListForDB", idListForDB);
 		}
 
 		/*
