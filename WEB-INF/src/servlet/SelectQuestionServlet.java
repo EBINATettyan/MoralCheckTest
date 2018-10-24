@@ -167,7 +167,7 @@ public class SelectQuestionServlet extends HttpServlet {
 			resultDAO.insertResultTesting(result);
 
 			request.setAttribute("coutId", countId);
-			request.setAttribute("PostAbility", postAbility);
+			request.setAttribute("postAbility", postAbility);
 
 			//sessionの破棄
 			session.invalidate();
