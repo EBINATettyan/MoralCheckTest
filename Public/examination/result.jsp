@@ -22,7 +22,7 @@
 		</nav>
 
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="page-header" style="margin-top: -20px; padding-bottom: 0px;">
 					<h1>
 						結果 <small> 受検時間 <script>
@@ -49,18 +49,18 @@
 				<h2>
 					あなたの情報モラルレベルは<span style="font-size: xx-large;">&nbsp;&nbsp;<span style="color: #FF1493;"> <%
  	if (postAbility < 1.0) {
- 		out.println("小学生レベル");
+ 		out.println("レベル1");
  	} else if (postAbility >= 1.0 && postAbility < 2.5) {
- 		out.println("中学生レベル");
+ 		out.println("レベル2");
  	} else {
- 		out.println("高校生レベル");
+ 		out.println("レベル3");
  	}
  %></span></span>&nbsp;&nbsp;です。
 				</h2>
 				<div id="chart" style="min-width: 310px; max-width: 100%; height: 300px; margin: 0 auto"></div>
 				<div class="well well-sm">
-					グラフの<span style="background-color: #FAFA96">黄色は小学生</span>、<span style="background-color: #96FAAA">黄緑色は中学生</span>、<span
-						style="background-color: #96FAFA">水色は高校生</span>、のレベルにそれぞれ対応しています。
+					グラフの<span style="background-color: #FAFA96">黄色はレベル1</span>、<span style="background-color: #96FAAA">黄緑色はレベル2</span>、<span
+						style="background-color: #96FAFA">水色はレベル3</span>、にそれぞれ対応しています。
 				</div>
 				<br>
 			</div>

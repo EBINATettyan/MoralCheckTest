@@ -16,77 +16,79 @@
 
 <body>
 	<div class="container">
-		<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall">
-			<div class="navbar-header">
-				<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
-			</div>
-		</nav>
-		<nav class="collapse navbar-collapse">
-			<ul class="nav navbar-nav pull-right">
-				<li class="navbar-text"><span class="navbar_text_right_side"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; <script>
-					//localStrageに保存された受検時間を取得
-					var sec = Number(window.localStorage
-							.getItem('secLocalStrage'));
-					var min = Number(window.localStorage
-							.getItem('minLocalStrage'));
-					var hour = Number(window.localStorage
-							.getItem('hourLocalStrage'));
+		<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+			<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall">
+				<div class="navbar-header">
+					<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
+				</div>
+			</nav>
+			<nav class="collapse navbar-collapse">
+				<ul class="nav navbar-nav pull-right">
+					<li class="navbar-text"><span class="navbar_text_right_side"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; <script>
+						//localStrageに保存された受検時間を取得
+						var sec = Number(window.localStorage
+								.getItem('secLocalStrage'));
+						var min = Number(window.localStorage
+								.getItem('minLocalStrage'));
+						var hour = Number(window.localStorage
+								.getItem('hourLocalStrage'));
 
-					// 0埋め
-					secNumber = ('0' + sec).slice(-2);
-					minNumber = ('0' + min).slice(-2);
-					hourNumber = ('0' + hour).slice(-2);
+						// 0埋め
+						secNumber = ('0' + sec).slice(-2);
+						minNumber = ('0' + min).slice(-2);
+						hourNumber = ('0' + hour).slice(-2);
 
-					//	受検時間の表示
-					document.write('<span id=timer>' + hourNumber + ':'
-							+ minNumber + ':' + secNumber + '</span>');
-				</script> </span></li>
-			</ul>
-		</nav>
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<font size="5"> <%
+						//	受検時間の表示
+						document.write('<span id=timer>' + hourNumber + ':'
+								+ minNumber + ':' + secNumber + '</span>');
+					</script> </span></li>
+				</ul>
+			</nav>
+			<div class="row">
+				<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<font size="5"> <%
  	out.println(countId + "問目");
- %>
-						</font>
-					</div>
-					<div class="panel-body">
-						<div style="display: none" id="warnning">
-							<span style='color: #ff0000'>＊答えを選択してください</span>
-						</div>
-						<div>
-							<font size="3">&nbsp; <%
- 	out.println(question.getContent() + "");
  %>
 							</font>
 						</div>
-						<br>
-						<form method="POST" action="SelectQuestionServlet">
-							<div class="well well-sm">
-								<label><input type='radio' name='answer' value='1' />&nbsp;&nbsp; <%
+						<div class="panel-body">
+							<div style="display: none" id="warnning">
+								<span style='color: #ff0000'>＊答えを選択してください</span>
+							</div>
+							<div>
+								<font size="3">&nbsp; <%
+ 	out.println(question.getContent() + "");
+ %>
+								</font>
+							</div>
+							<br>
+							<form method="POST" action="SelectQuestionServlet">
+								<div class="well well-sm">
+									<label><input type='radio' name='answer' value='1' />&nbsp;&nbsp; <%
  	out.println(question.getChoice1());
  %></label>
-							</div>
-							<div class="well well-sm">
-								<label><input type='radio' name='answer' value='2' />&nbsp;&nbsp; <%
+								</div>
+								<div class="well well-sm">
+									<label><input type='radio' name='answer' value='2' />&nbsp;&nbsp; <%
  	out.println(question.getChoice2());
  %></label>
-							</div>
-							<div class="well well-sm">
-								<label><input type='radio' name='answer' value='3' />&nbsp;&nbsp; <%
+								</div>
+								<div class="well well-sm">
+									<label><input type='radio' name='answer' value='3' />&nbsp;&nbsp; <%
  	out.println(question.getChoice3());
  %></label>
-							</div>
-							<div class="well well-sm">
-								<label><input type='radio' name='answer' value='4' />&nbsp;&nbsp; <%
+								</div>
+								<div class="well well-sm">
+									<label><input type='radio' name='answer' value='4' />&nbsp;&nbsp; <%
  	out.println(question.getChoice4());
  %></label>
-							</div>
-							<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type="submit" class="btn btn-success btn-lg"
-								id="answer_button" value="答える">
-						</form>
+								</div>
+								<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type="submit" class="btn btn-success btn-lg"
+									id="answer_button" value="答える">
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
