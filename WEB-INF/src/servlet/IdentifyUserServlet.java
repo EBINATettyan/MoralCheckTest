@@ -33,7 +33,7 @@ public class IdentifyUserServlet extends HttpServlet {
 		int userId = accessLogDAO.identifyUser();
 
 		//アクセスログの新規登録
-		accessLogDAO.addAccessLog(userId + 1);
+		accessLogDAO.insertAccessLog(userId + 1);
 
 		//何問目の問題を回答しているか保持する
 		int countId = 1;
