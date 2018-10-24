@@ -37,7 +37,7 @@ public class AnswerLogDAO extends DriverAccessor {
 			stmt.setInt(10, answerLog.getAnswer2());
 			stmt.setInt(11, answerLog.getAnswer3());
 			stmt.setInt(12, answerLog.getAnswer4());
-			stmt.setString(13, answerLog.getAnswerItemTime());
+			stmt.setDouble(13, answerLog.getAnswerItemTime());
 
 			stmt.executeUpdate();
 			stmt.close();
@@ -69,7 +69,7 @@ public class AnswerLogDAO extends DriverAccessor {
 				AnswerLog answerLog = new AnswerLog(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("question_id"),
 						rs.getDouble("discrimination"), rs.getDouble("difficulty"), rs.getInt("true_or_false"),
 						rs.getDouble("ability"), rs.getDouble("sd"), rs.getInt("answer1"), rs.getInt("answer2"),
-						rs.getInt("answer3"), rs.getInt("answer4"), rs.getString("answer_item_time"));
+						rs.getInt("answer3"), rs.getInt("answer4"), rs.getDouble("answer_item_time"));
 				answerLogList.add(answerLog);
 			}
 

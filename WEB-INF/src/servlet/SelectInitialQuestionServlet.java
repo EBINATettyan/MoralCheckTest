@@ -40,7 +40,7 @@ public class SelectInitialQuestionServlet extends HttpServlet {
 		long dateTo = date.getTime();
 		long dateFrom = (long) session.getAttribute("dateTo");
 		long diff = (dateTo - dateFrom) / 1000;
-		String answerItemTime = String.valueOf(diff);
+		double answerItemTime = Double.valueOf(diff);
 
 		/*
 		 * 問題に正答しているかどうかを判別
