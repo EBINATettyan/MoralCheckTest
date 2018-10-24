@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import beans.AnswerLog;
 import utility.DriverAccessor;
@@ -52,44 +50,31 @@ public class AnswerLogDAO extends DriverAccessor {
 		}
 	}
 
-	// この学習者の解答の中で、今回の受検の解答データを検索する
-	public List<AnswerLog> selectAnswerLogByUser(int userId, int section) {
+	//answer_item_timeの合計を計算する
+	public double calcSumAnswer(int userId) {
+
+		Connection con = null;
+		con = createConnection();
+
 		try {
-
-			String sql = "SELECT * FROM answer_logs WHERE user_id ='" + userId + "' AND section='" + section + "';";
-
-			Connection con = null;
-			con = createConnection();
+			String sql = "SELECT SUM(answer_item_time) FROM answer_logs WHERE user_id =" + userId;
 
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-
-			List<AnswerLog> answerLogList = new ArrayList<AnswerLog>();
-			while (rs.next()) {
-				AnswerLog answerLog = new AnswerLog(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("question_id"),
-						rs.getDouble("discrimination"), rs.getDouble("difficulty"), rs.getInt("true_or_false"),
-						rs.getDouble("ability"), rs.getDouble("sd"), rs.getInt("answer1"), rs.getInt("answer2"),
-						rs.getInt("answer3"), rs.getInt("answer4"), rs.getDouble("answer_item_time"));
-				answerLogList.add(answerLog);
-			}
-
+			rs.next();
+			double answerTime = rs.getInt(1);
 			stmt.close();
 			rs.close();
 			closeConnection(con);
 
-			return answerLogList;
+			return answerTime;
 
 		} catch (
 
-		SQLException e)
-
-		{
+		SQLException e) {
 			e.printStackTrace();
-			return null;
-		} finally
-
-		{
+			return 0;
+		} finally {
 		}
 	}
-
 }
