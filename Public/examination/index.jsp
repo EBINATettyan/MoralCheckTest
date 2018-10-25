@@ -5,29 +5,23 @@
 <head>
 <meta charset="utf-8">
 <title>ホーム画面</title>
-<link
-	href="/MoralCheckTest/Public/common/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="/MoralCheckTest/Public/common/css/original.css"
-	rel="stylesheet" />
+<link href="/MoralCheckTest/Public/common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/MoralCheckTest/Public/common/css/original.css" rel="stylesheet" />
 </head>
 
 <body>
 	<div class="container">
 		<!-- ヘッダー部 -->
-		<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
-			<nav class="navbar navbar-default navbar-fixed-top"
-				id="navbar_overall_home">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall_home">
 				<div class="navbar-header">
-					<a class="navbar-brand" id="navbar_text_left_side"><font
-						size="+2">情報モラル適応型テスト</font></a>
+					<a class="navbar-brand" id="navbar_text_left_side"><font size="+2">情報モラル適応型テスト</font></a>
 				</div>
 			</nav>
 
 			<!-- イメージ図の表示 -->
-			<div class="row"  style="padding: 60px 0 0 0">
-				<img src="/MoralCheckTest/Public/common/img/explain.png"
-					class="img-responsive">
+			<div class="row" style="padding: 45px 0 0 0">
+				<img src="/MoralCheckTest/Public/common/img/explain.png" class="img-responsive">
 			</div>
 
 			<!-- コンテンツ部 -->
@@ -45,7 +39,7 @@
 					<ul>
 						<li><h5>「問題に回答する画面に進む」ボタンをおすとテストを開始します。</h5></li>
 						<li><h5>問題画面で「答える」ボタンをおすと次の問題に進みます。</h5></li>
-						<li><h5>情報モラルレベルは「レベル1~レベル3」の3段階です。</h5></li>
+						<li><h5>情報モラルレベルは「レベル1~レベル5」の5段階です。</h5></li>
 						<li><h5>
 								<b><span style="text-decoration: underline">前の問題に戻ることはできません。</span></b>
 							</h5></li>
@@ -55,9 +49,7 @@
 
 			<div class="row" style="padding: 20px 0 0 0">
 				<div style="text-align: right">
-					<a class="btn btn-success btn-lg"
-						href="/MoralCheckTest/Public/examination/IdentifyUserServlet"
-						role="button">問題に回答する画面に進む</a>
+					<a class="btn btn-success btn-lg" href="/MoralCheckTest/Public/examination/IdentifyUserServlet" role="button">問題に回答する画面に進む</a>
 				</div>
 			</div>
 		</div>

@@ -17,16 +17,13 @@
 <body>
 	<div class="container">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<nav class="navbar navbar-default navbar-fixed-top"
-				id="navbar_overall_home">
+			<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall_home">
 				<div class="navbar-header">
-					<a class="navbar-brand" id="navbar_text_left_side"><font
-						size="+2">情報モラル適応型テスト</font></a>
+					<a class="navbar-brand" id="navbar_text_left_side"><font size="+2">情報モラル適応型テスト</font></a>
 				</div>
 				<nav class="collapse navbar-collapse">
 					<ul class="nav navbar-nav pull-right">
-						<li class="navbar-text"><span class="navbar_text_right_side"><i
-								class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<font
+						<li class="navbar-text"><span class="navbar_text_right_side"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;<font
 								size="+1"> <script>
 									//localStrageに保存された受検時間を取得
 									var sec = Number(window.localStorage
@@ -51,7 +48,7 @@
 				</nav>
 			</nav>
 
-			<div class="row" style="padding: 60px 0 0 0">
+			<div class="row" style="padding: 45px 0 0 0">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -72,32 +69,27 @@
 							<br>
 							<form method='post' action='SelectQuestionServlet'>
 								<div class='well well-sm'>
-									<label><input type='checkbox' name='answer' value='1'>&nbsp;&nbsp;
-										<%
-											out.println(question.getChoice1());
-										%></label>
+									<label><input type='checkbox' name='answer' value='1'>&nbsp;&nbsp; <%
+ 	out.println(question.getChoice1());
+ %></label>
 								</div>
 								<div class='well well-sm'>
-									<label><input type='checkbox' name='answer' value='2'>&nbsp;&nbsp;
-										<%
-											out.println(question.getChoice2());
-										%></label>
+									<label><input type='checkbox' name='answer' value='2'>&nbsp;&nbsp; <%
+ 	out.println(question.getChoice2());
+ %></label>
 								</div>
 								<div class='well well-sm'>
-									<label><input type='checkbox' name='answer' value='3'>&nbsp;&nbsp;
-										<%
-											out.println(question.getChoice3());
-										%></label>
+									<label><input type='checkbox' name='answer' value='3'>&nbsp;&nbsp; <%
+ 	out.println(question.getChoice3());
+ %></label>
 								</div>
 								<div class='well well-sm'>
-									<label><input type='checkbox' name='answer' value='4'>&nbsp;&nbsp;
-										<%
-											out.println(question.getChoice4());
-										%></label>
+									<label><input type='checkbox' name='answer' value='4'>&nbsp;&nbsp; <%
+ 	out.println(question.getChoice4());
+ %></label>
 								</div>
-								<input type='hidden' name='countId'
-									value=<%out.println(countId);%>> <input type='submit'
-									class='btn btn-success btn-lg' id='answer_button' value='答える'>
+								<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type='submit' class='btn btn-success btn-lg'
+									id='answer_button' value='答える'>
 							</form>
 						</div>
 					</div>
@@ -106,10 +98,8 @@
 		</div>
 	</div>
 </body>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="../../js/countUpTimer.js"></script>
 <!--カウントアップタイマー-->
 <script>

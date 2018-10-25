@@ -2,67 +2,80 @@
 <%@ page import="java.util.ArrayList"%>
 <%
 	double postAbility = (double) request.getAttribute("postAbility");
+	if (postAbility < -3.0) {
+		postAbility = -3.0;
+	} else if (postAbility > 3.0) {
+		postAbility = 3.0;
+	}
+	//highCharts(startを0)に対応するため、変換
+	postAbility = postAbility + 3.0;
+%>
+<%
+	String level = null;
+	if (postAbility < 1.5) {
+		level = "レベル1";
+	} else if (postAbility >= 1.5 && postAbility < 3.0) {
+		level = "レベル2";
+	} else if (postAbility >= 3.0 && postAbility < 4.5) {
+		level = "レベル3";
+	} else if (postAbility >= 4.5 && postAbility < 6.0) {
+		level = "レベル4";
+	}
 %>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>テスト画面</title>
+<title>テスト結果画面</title>
 <link href="../common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="../common/css/original.css" rel="stylesheet" />
 </head>
 
 <body>
 	<div class="container">
-		<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall">
-			<div class="navbar-header">
-				<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
-			</div>
-		</nav>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall_home">
+				<div class="navbar-header">
+					<a class="navbar-brand" id="navbar_text_left_side"><font size="+2">情報モラル適応型テスト</font></a>
+				</div>
+			</nav>
 
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="page-header" style="margin-top: -20px; padding-bottom: 0px;">
-					<h1>
-						結果 <small> 受検時間 <script>
-							//localStrageに保存された受検時間を取得
-							var sec = Number(window.localStorage
-									.getItem('secLocalStrage'));
-							var min = Number(window.localStorage
-									.getItem('minLocalStrage'));
-							var hour = Number(window.localStorage
-									.getItem('hourLocalStrage'));
-							// 0埋め
-							secNumber = ('0' + sec).slice(-2);
-							minNumber = ('0' + min).slice(-2);
-							hourNumber = ('0' + hour).slice(-2);
-							//	受検時間の表示
-							document.write(hourNumber + ':' + minNumber + ':'
-									+ secNumber);
-							//localStrageに保存されている値をクリアにする．
-							window.localStorage.clear();
-						</script>
-						</small>
-					</h1>
+			<div class="row" style="padding: 45px 0 0 0">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="page-header" style="margin-top: -20px; padding-bottom: 0px;">
+						<h1>
+							結果 <small> 受検時間 <script>
+								//localStrageに保存された受検時間を取得
+								var sec = Number(window.localStorage
+										.getItem('secLocalStrage'));
+								var min = Number(window.localStorage
+										.getItem('minLocalStrage'));
+								var hour = Number(window.localStorage
+										.getItem('hourLocalStrage'));
+								// 0埋め
+								secNumber = ('0' + sec).slice(-2);
+								minNumber = ('0' + min).slice(-2);
+								hourNumber = ('0' + hour).slice(-2);
+								//	受検時間の表示
+								document.write(hourNumber + ':' + minNumber
+										+ ':' + secNumber);
+								//localStrageに保存されている値をクリアにする．
+								window.localStorage.clear();
+							</script>
+							</small>
+						</h1>
+					</div>
+					<h2>
+						あなたの情報モラルレベルは<span style="font-size: xx-large;">&nbsp;<span style="color: #FF1493;"> <%=level%></span></span>&nbsp;です。
+					</h2>
+					<div id="chart" style="min-width: 310px; max-width: 100%; height: 300px; margin: 0 auto"></div>
+					<div class="well well-sm">
+						グラフの<span style="background-color: #FF3333">&nbsp;&nbsp;&nbsp;</span>はレベル1、<span style="background-color: #FFFF66">&nbsp;&nbsp;&nbsp;</span>はレベル2、<span
+							style="background-color: #33CC00">&nbsp;&nbsp;&nbsp;</span>はレベル3、<span style="background-color: #3366FF">&nbsp;&nbsp;&nbsp;</span>はレベル4にそれぞれ対応しています。
+					</div>
+					<br>
 				</div>
-				<h2>
-					あなたの情報モラルレベルは<span style="font-size: xx-large;">&nbsp;&nbsp;<span style="color: #FF1493;"> <%
- 	if (postAbility < 1.0) {
- 		out.println("レベル1");
- 	} else if (postAbility >= 1.0 && postAbility < 2.5) {
- 		out.println("レベル2");
- 	} else {
- 		out.println("レベル3");
- 	}
- %></span></span>&nbsp;&nbsp;です。
-				</h2>
-				<div id="chart" style="min-width: 310px; max-width: 100%; height: 300px; margin: 0 auto"></div>
-				<div class="well well-sm">
-					グラフの<span style="background-color: #FAFA96">黄色はレベル1</span>、<span style="background-color: #96FAAA">黄緑色はレベル2</span>、<span
-						style="background-color: #96FAFA">水色はレベル3</span>、にそれぞれ対応しています。
-				</div>
-				<br>
 			</div>
 		</div>
 	</div>
@@ -92,7 +105,6 @@
 				color : '#12f342',
 				fontSize : '36px'
 			}
-
 		},
 		subtitle : {
 			text : ''
@@ -108,8 +120,8 @@
 
 		},
 		yAxis : {
-			min : -4.0,
-			max : 4.0,
+			min : 0,
+			max : 6,
 			gridLineColor : '#000000',//線の色
 			gridLineWidth : 1,//線の太さ
 			//tickInterval: 0.5,
@@ -121,35 +133,37 @@
 			//true//x軸上のメモリが表示されるか否か。
 			},
 			plotBands : [ {//グラフの背景色を変化することができる
-				color : '#FAFA96',
-				from : -4.0,
-				to : 1.0,
-			}, {//
-				color : '#96FAAA',
-				from : 1.0,
-				to : 2.5,
+				color : '#FF3333',
+				from : 0.0,
+				to : 1.5,
 			}, {
-				color : '#96FAFA',
-				from : 2.5,
-				to : 4.0
+				color : '#FFFF66',
+				from : 1.5,
+				to : 3.0,
+			}, {
+				color : '#33CC00',
+				from : 3.0,
+				to : 4.5,
+			}, {
+				color : '#3366FF',
+				from : 4.5,
+				to : 6.0
 			} ],
-		//categories: [1,2,3,4,5]//x軸上の値を確認する
-
 		},
+
 		tooltip : {//グラフを表示したい際に，何かが出てくる．
 			backgroundColor : '#000000',
 			enabled : false
-		//利用できるか否か。
-		//valueSuffix: 'millions'
 		},
+
 		plotOptions : {
 			bar : {
 				dataLabels : {
 					enabled : false
-				//「true」の場合には，値がグラフ上に出力される．
 				}
 			}
 		},
+
 		legend : {//凡例について
 			enabled : false,//表示するか否か。
 		},
@@ -161,18 +175,16 @@
 			enabled : false
 		},
 		series : [ {
-			//name: null,
 			data : [
-<%out.println(postAbility);%>
+<%=postAbility%>
 	]
-		//入力した値を出力する．//
 		} ]
-
 	});
 </script>
 
 <script type="text/javascript">
-	$(window).load(function() {//ページが読みこまれた後に，実行する処理
+	//ページが読みこまれた後に，実行する処理
+	$(window).load(function() {
 		//0.01秒後に処理を実行
 		setInterval(function() {
 			//URLにハッシュを付ける
