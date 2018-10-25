@@ -16,7 +16,7 @@
 
 <body>
 	<div class="container">
-		<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall">
 				<div class="navbar-header">
 					<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
@@ -45,7 +45,7 @@
 				</ul>
 			</nav>
 			<div class="row">
-				<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<font size="5"> <%
