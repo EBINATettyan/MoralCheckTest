@@ -5,23 +5,29 @@
 <head>
 <meta charset="utf-8">
 <title>ホーム画面</title>
-<link href="/MoralCheckTest/Public/common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/MoralCheckTest/Public/common/css/original.css" rel="stylesheet" />
+<link
+	href="/MoralCheckTest/Public/common/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="/MoralCheckTest/Public/common/css/original.css"
+	rel="stylesheet" />
 </head>
 
 <body>
 	<div class="container">
 		<!-- ヘッダー部 -->
-		<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="padding: 40px 0 0 0">
-			<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall_home">
+		<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+			<nav class="navbar navbar-default navbar-fixed-top"
+				id="navbar_overall_home">
 				<div class="navbar-header">
-					<a class="navbar-brand" id="navbar_text_left_side"><font size="+2">情報モラル適応型テスト</font></a>
+					<a class="navbar-brand" id="navbar_text_left_side"><font
+						size="+2">情報モラル適応型テスト</font></a>
 				</div>
 			</nav>
 
 			<!-- イメージ図の表示 -->
-			<div class="row">
-				<img src="/MoralCheckTest/Public/common/img/explain.png" class="img-responsive">
+			<div class="row"  style="padding: 60px 0 0 0">
+				<img src="/MoralCheckTest/Public/common/img/explain.png"
+					class="img-responsive">
 			</div>
 
 			<!-- コンテンツ部 -->
@@ -49,7 +55,9 @@
 
 			<div class="row" style="padding: 20px 0 0 0">
 				<div style="text-align: right">
-					<a class="btn btn-success btn-lg" href="/MoralCheckTest/Public/examination/IdentifyUserServlet" role="button">問題に回答する画面に進む</a>
+					<a class="btn btn-success btn-lg"
+						href="/MoralCheckTest/Public/examination/IdentifyUserServlet"
+						role="button">問題に回答する画面に進む</a>
 				</div>
 			</div>
 		</div>

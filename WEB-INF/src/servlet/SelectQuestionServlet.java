@@ -171,7 +171,9 @@ public class SelectQuestionServlet extends HttpServlet {
 
 			//sessionの破棄
 			session.invalidate();
-			System.out.println("session破棄");
+
+			//System.out.println("session破棄");
+
 			getServletContext().getRequestDispatcher("/Public/examination/result.jsp").forward(request, response);
 
 		} else {
