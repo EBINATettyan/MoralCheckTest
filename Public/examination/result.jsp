@@ -12,16 +12,27 @@
 %>
 <%
 	String level = null;
-	if (postAbility < 1.5) {
+	if (postAbility < 1.2) {
 		level = "レベル1";
-	} else if (postAbility >= 1.5 && postAbility < 3.0) {
+	} else if (postAbility >= 1.2 && postAbility < 2.4) {
 		level = "レベル2";
-	} else if (postAbility >= 3.0 && postAbility < 4.5) {
+	} else if (postAbility >= 2.4 && postAbility < 3.6) {
 		level = "レベル3";
-	} else if (postAbility >= 4.5 && postAbility < 6.0) {
+	} else if (postAbility >= 3.6 && postAbility < 4.8) {
 		level = "レベル4";
+	} else if (postAbility >= 4.8 && postAbility < 6.0) {
+		level = "レベル5";
 	}
 %>
+<%
+	int answerAllTime = (int) (double) request.getAttribute("answerAllTime");
+	int sec, min, hour;
+	sec = answerAllTime;
+	hour = sec / 3600;
+	min = (sec % 3600) / 60;
+	sec = sec % 60;
+%>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -45,24 +56,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="page-header" style="margin-top: -20px; padding-bottom: 0px;">
 						<h1>
-							結果 <small> 受検時間 <script>
-								//localStrageに保存された受検時間を取得
-								var sec = Number(window.localStorage
-										.getItem('secLocalStrage'));
-								var min = Number(window.localStorage
-										.getItem('minLocalStrage'));
-								var hour = Number(window.localStorage
-										.getItem('hourLocalStrage'));
-								// 0埋め
-								secNumber = ('0' + sec).slice(-2);
-								minNumber = ('0' + min).slice(-2);
-								hourNumber = ('0' + hour).slice(-2);
-								//	受検時間の表示
-								document.write(hourNumber + ':' + minNumber
-										+ ':' + secNumber);
-								//localStrageに保存されている値をクリアにする．
-								window.localStorage.clear();
-							</script>
+							結果 <small> 受検時間 <%=hour + ':' + min + ':' + sec%>
 							</small>
 						</h1>
 					</div>
@@ -72,7 +66,8 @@
 					<div id="chart" style="min-width: 310px; max-width: 100%; height: 300px; margin: 0 auto"></div>
 					<div class="well well-sm">
 						グラフの<span style="background-color: #FF3333">&nbsp;&nbsp;&nbsp;</span>はレベル1、<span style="background-color: #FFFF66">&nbsp;&nbsp;&nbsp;</span>はレベル2、<span
-							style="background-color: #33CC00">&nbsp;&nbsp;&nbsp;</span>はレベル3、<span style="background-color: #3366FF">&nbsp;&nbsp;&nbsp;</span>はレベル4にそれぞれ対応しています。
+							style="background-color: #33CC00">&nbsp;&nbsp;&nbsp;</span>はレベル3、<span style="background-color: #33CCFF">&nbsp;&nbsp;&nbsp;</span>はレベル4、<span
+							style="background-color: #3366FF">&nbsp;&nbsp;&nbsp;</span>はレベル5にそれぞれ対応しています。
 					</div>
 					<br>
 				</div>
@@ -135,18 +130,22 @@
 			plotBands : [ {//グラフの背景色を変化することができる
 				color : '#FF3333',
 				from : 0.0,
-				to : 1.5,
+				to : 1.2,
 			}, {
 				color : '#FFFF66',
-				from : 1.5,
-				to : 3.0,
+				from : 1.2,
+				to : 2.4,
 			}, {
 				color : '#33CC00',
-				from : 3.0,
-				to : 4.5,
+				from : 2.4,
+				to : 3.6,
+			}, {
+				color : '#33CCFF',
+				from : 3.6,
+				to : 4.8,
 			}, {
 				color : '#3366FF',
-				from : 4.5,
+				from : 4.8,
 				to : 6.0
 			} ],
 		},

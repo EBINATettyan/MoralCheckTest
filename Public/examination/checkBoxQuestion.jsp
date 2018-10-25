@@ -95,6 +95,19 @@
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<%
+						if (question.getId() == 61) {
+					%>
+					<h4>↓設定画面</h4>
+					<img src="../common/img/examination.png" alt="設定画面">
+					<%
+						}
+					%>
+				</div>
+			</div>
+			<br> <br> <br> <br>
 		</div>
 	</div>
 </body>
