@@ -17,34 +17,40 @@
 <body>
 	<div class="container">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<nav class="navbar navbar-default navbar-fixed-top" id="navbar_overall">
+			<nav class="navbar navbar-default navbar-fixed-top"
+				id="navbar_overall_home">
 				<div class="navbar-header">
-					<a class="navbar-brand" id="navbar_text_left_side">情報モラル適当型テスト</a>
+					<a class="navbar-brand" id="navbar_text_left_side"><font
+						size="+2">情報モラル適応型テスト</font></a>
 				</div>
-			</nav>
-			<nav class="collapse navbar-collapse">
-				<ul class="nav navbar-nav pull-right">
-					<li class="navbar-text"><span class="navbar_text_right_side"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; <script>
-						//localStrageに保存された受検時間を取得
-						var sec = Number(window.localStorage
-								.getItem('secLocalStrage'));
-						var min = Number(window.localStorage
-								.getItem('minLocalStrage'));
-						var hour = Number(window.localStorage
-								.getItem('hourLocalStrage'));
+				<nav class="collapse navbar-collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li class="navbar-text"><span class="navbar_text_right_side"><i
+								class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; <font
+								size="+1"> <script>
+									//localStrageに保存された受検時間を取得
+									var sec = Number(window.localStorage
+											.getItem('secLocalStrage'));
+									var min = Number(window.localStorage
+											.getItem('minLocalStrage'));
+									var hour = Number(window.localStorage
+											.getItem('hourLocalStrage'));
 
-						// 0埋め
-						secNumber = ('0' + sec).slice(-2);
-						minNumber = ('0' + min).slice(-2);
-						hourNumber = ('0' + hour).slice(-2);
+									// 0埋め
+									secNumber = ('0' + sec).slice(-2);
+									minNumber = ('0' + min).slice(-2);
+									hourNumber = ('0' + hour).slice(-2);
 
-						//	受検時間の表示
-						document.write('<span id=timer>' + hourNumber + ':'
-								+ minNumber + ':' + secNumber + '</span>');
-					</script> </span></li>
-				</ul>
+									//	受検時間の表示
+									document.write('<span id=timer>'
+											+ hourNumber + ':' + minNumber
+											+ ':' + secNumber + '</span>');
+								</script></font> </span></li>
+					</ul>
+				</nav>
 			</nav>
-			<div class="row">
+
+			<div class="row" style="padding: 60px 0 0 0">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -66,27 +72,32 @@
 							<br>
 							<form method="POST" action="SelectInitialQuestionServlet">
 								<div class="well well-sm">
-									<label><input type='radio' name='answer' value='1' />&nbsp;&nbsp; <%
- 	out.println(initialQuestion.getChoice1());
- %></label>
+									<label><input type='radio' name='answer' value='1' />&nbsp;&nbsp;
+										<%
+											out.println(initialQuestion.getChoice1());
+										%></label>
 								</div>
 								<div class="well well-sm">
-									<label><input type='radio' name='answer' value='2' />&nbsp;&nbsp; <%
- 	out.println(initialQuestion.getChoice2());
- %></label>
+									<label><input type='radio' name='answer' value='2' />&nbsp;&nbsp;
+										<%
+											out.println(initialQuestion.getChoice2());
+										%></label>
 								</div>
 								<div class="well well-sm">
-									<label><input type='radio' name='answer' value='3' />&nbsp;&nbsp; <%
- 	out.println(initialQuestion.getChoice3());
- %></label>
+									<label><input type='radio' name='answer' value='3' />&nbsp;&nbsp;
+										<%
+											out.println(initialQuestion.getChoice3());
+										%></label>
 								</div>
 								<div class="well well-sm">
-									<label><input type='radio' name='answer' value='4' />&nbsp;&nbsp; <%
- 	out.println(initialQuestion.getChoice4());
- %></label>
+									<label><input type='radio' name='answer' value='4' />&nbsp;&nbsp;
+										<%
+											out.println(initialQuestion.getChoice4());
+										%></label>
 								</div>
-								<input type='hidden' name='countId' value=<%out.println(countId);%>> <input type="submit" class="btn btn-success btn-lg"
-									id="answer_button" value="答える">
+								<input type='hidden' name='countId'
+									value=<%out.println(countId);%>> <input type="submit"
+									class="btn btn-success btn-lg" id="answer_button" value="答える">
 							</form>
 						</div>
 					</div>
@@ -96,8 +107,10 @@
 	</div>
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="../common/js/countUpTimer.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {//ページが読みこまれた後に，実行する処理
