@@ -136,11 +136,6 @@ public class SelectQuestionServlet extends HttpServlet {
 		AnswerLogDAO answerLogDAO = new AnswerLogDAO();
 		answerLogDAO.insertAnswerLog(answerLog);
 
-		//初期であろうとなかろうと関係のあるsession等はここで宣言する
-		session.setAttribute("dateTo", dateTo);
-		session.setAttribute("dateFrom", dateFrom);
-		request.setAttribute("countId", (countId + 1));
-
 		/*
 		 * まず、前の能力値をpreAbilityとして、呼び出す
 		 * 次に、EAPで能力値を推定して、それをpostAbilityとする
@@ -166,8 +161,8 @@ public class SelectQuestionServlet extends HttpServlet {
 					(Double) session.getAttribute("initialAbility"), postAbility, answerAllTime);
 			resultDAO.insertResultTesting(result);
 
-			request.setAttribute("coutId", countId);
 			request.setAttribute("postAbility", postAbility);
+			request.setAttribute("answerAllTime", answerAllTime);
 
 			//sessionの破棄
 			session.invalidate();
@@ -178,6 +173,9 @@ public class SelectQuestionServlet extends HttpServlet {
 
 		} else {
 			session.setAttribute("preAbility", postAbility);
+			session.setAttribute("dateTo", dateTo);
+			session.setAttribute("dateFrom", dateFrom);
+			request.setAttribute("countId", (countId + 1));
 
 			//情報量最大の項目を受け取る
 			Question maxInformationQuestion = new Question();
