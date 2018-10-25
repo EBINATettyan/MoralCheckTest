@@ -108,8 +108,8 @@
 
 		},
 		yAxis : {
-			min : 0,//最大値
-			max : 5.5,//最小値
+			min : -4.0,
+			max : 4.0,
 			gridLineColor : '#000000',//線の色
 			gridLineWidth : 1,//線の太さ
 			//tickInterval: 0.5,
@@ -122,16 +122,16 @@
 			},
 			plotBands : [ {//グラフの背景色を変化することができる
 				color : '#FAFA96',
-				from : 0,
-				to : 2.0,
+				from : -4.0,
+				to : 1.0,
 			}, {//
 				color : '#96FAAA',
-				from : 2.0,
-				to : 3.3,
+				from : 1.0,
+				to : 2.5,
 			}, {
 				color : '#96FAFA',
-				from : 3.3,
-				to : 5.5
+				from : 2.5,
+				to : 4.0
 			} ],
 		//categories: [1,2,3,4,5]//x軸上の値を確認する
 
