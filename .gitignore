@@ -1,9 +1,9 @@
 bin/
 work/
-.classpath
 .project
 .DS_Store
 WEB-INF/classes/
 "*.class"
 *.jar
 WEB-INF/src/utility/DriverAccessor.java
+.classpath
