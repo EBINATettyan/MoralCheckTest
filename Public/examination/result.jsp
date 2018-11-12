@@ -25,12 +25,7 @@
 	}
 %>
 <%
-	int answerAllTime = (int) (double) request.getAttribute("answerAllTime");
-	int sec, min, hour;
-	sec = answerAllTime;
-	hour = sec / 3600;
-	min = (sec % 3600) / 60;
-	sec = sec % 60;
+	double answerAllTime = (double) request.getAttribute("answerAllTime");
 %>
 
 
@@ -56,7 +51,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="page-header" style="margin-top: -20px; padding-bottom: 0px;">
 						<h1>
-							結果 <small> 受検時間 <%=hour + ':' + min + ':' + sec%>
+							結果 <small> 受検時間 <%=answerAllTime%>秒
 							</small>
 						</h1>
 					</div>
