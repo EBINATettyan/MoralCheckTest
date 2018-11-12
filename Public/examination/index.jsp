@@ -37,7 +37,8 @@
 				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 					<h3 class="heading text_centering">注意事項について</h3>
 					<ul>
-						<li><h5>「問題に回答する画面に進む」ボタンをおすとテストを開始します。</h5></li>
+						<li><h5>「アンケート画面に進む」ボタンをおすとアンケートを開始します。</h5></li>
+						<li><h5>アンケートに終了次第、テストを開始します。</h5></li>
 						<li><h5>問題画面で「答える」ボタンをおすと次の問題に進みます。</h5></li>
 						<li><h5>情報モラルレベルは「レベル1~レベル5」の5段階です。</h5></li>
 						<li><h5>
@@ -49,7 +50,7 @@
 
 			<div class="row" style="padding: 20px 0 0 0">
 				<div style="text-align: right">
-					<a class="btn btn-success btn-lg" href="/MoralCheckTest/Public/examination/IdentifyUserServlet" role="button">問題に回答する画面に進む</a>
+					<a class="btn btn-success btn-lg" href="/MoralCheckTest/Public/examination/insertUserInformation.jsp" role="button">アンケート画面に進む</a>
 				</div>
 			</div>
 		</div>

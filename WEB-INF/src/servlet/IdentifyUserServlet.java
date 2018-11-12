@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.InitialQuestion;
+import beans.UserInformation;
 import dao.AccessLogDAO;
 import dao.InitialQuestionDAO;
+import dao.UserDAO;
 
 public class IdentifyUserServlet extends HttpServlet {
 
@@ -34,6 +36,37 @@ public class IdentifyUserServlet extends HttpServlet {
 
 		//アクセスログの新規登録
 		accessLogDAO.insertAccessLog(userId + 1);
+
+		//受験者情報の登録
+		int sex = Integer.parseInt(request.getParameter("sex"));
+		int age = Integer.parseInt(request.getParameter("age"));
+		int purpose = Integer.parseInt(request.getParameter("purpose"));
+		int useInternetTime = Integer.parseInt(request.getParameter("useInternetTime"));
+		String machine[] = request.getParameterValues("machine");
+		String machineForDB = machine[0];
+		if (machine.length >= 2) {
+			for (int i = 1; i < machine.length; i++) {
+				machineForDB = machineForDB + ":" + machine[i];
+			}
+		}
+		String judgeExplain[] = request.getParameterValues("judgeExplain");
+		String judgeExplainForDB = judgeExplain[0];
+		if (judgeExplain.length >= 2) {
+			for (int k = 1; k < judgeExplain.length; k++) {
+				judgeExplainForDB = judgeExplainForDB + ":" + judgeExplain[k];
+			}
+		}
+		String judgeExperience[] = request.getParameterValues("judgeExperience");
+		String judgeExperienceForDB = judgeExperience[0];
+		if (judgeExperience.length >= 2) {
+			for (int l = 1; l < judgeExperience.length; l++) {
+				judgeExperienceForDB = judgeExperienceForDB + ":" + judgeExperience[l];
+			}
+		}
+		UserInformation userInformation = new UserInformation(0, userId + 1, sex, age, purpose, machineForDB,
+				useInternetTime, judgeExplainForDB, judgeExperienceForDB);
+		UserDAO userDAO = new UserDAO();
+		userDAO.insertUserInformation(userInformation);
 
 		//何問目の問題を回答しているか保持する
 		int countId = 1;
